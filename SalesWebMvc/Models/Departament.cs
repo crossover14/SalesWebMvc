@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using saleswebmvc.models;
 using System.Linq;
 
 namespace SalesWebMvc.Models
@@ -16,9 +15,9 @@ namespace SalesWebMvc.Models
         {
 
         }
-        public Departament(int id, string name)
+        public Departament( string name)
         {
-            Id = id;
+            
             Name = name;
 
         }

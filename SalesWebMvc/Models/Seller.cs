@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using SalesWebMvc.Models;
 using System.Collections.Generic;
-namespace saleswebmvc.models
+namespace SalesWebMvc.Models
 
 {
     public class Seller
@@ -19,9 +18,9 @@ namespace saleswebmvc.models
         {
         }
 
-        public Seller(int id, string nome, string email, DateTime dataDeNascimento, double basesalarial, Departament departament)
+        public Seller( string nome, string email, DateTime dataDeNascimento, double basesalarial, Departament departament)
         {
-            Id = id;
+            
             Nome = nome;
             Email = email;
             DataDeNascimento = dataDeNascimento;
