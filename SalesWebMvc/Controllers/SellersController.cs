@@ -66,6 +66,7 @@ namespace SalesWebMvc.Controllers
             return RedirectToAction(nameof(Index));
         }
         
+        
         public IActionResult Detail(int? id)
         {
             if (id == null)

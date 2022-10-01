@@ -23,10 +23,6 @@
             </th>
              <th>
                 @Html.DisplayNameFor(model => model.BaseSalarial)
-            </th>
-                <th>
-                @Html.DisplayNameFor(model => model.DepartamentId)
-            </th>
             <th>Editar</th>
             <th>Detalhes</th>
             <th>Deletar</th>
@@ -48,17 +44,14 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.BaseSalarial)
                 </td>
-                  <td>
-                    @Html.DisplayFor(modelItem => item.DepartamentId)
-                </td>
                 <td>
-                    <a asp-action="edit" asp-route-id="@item.Id">Edit</a>
+                    <a asp-action="edit" asp-route-id="@item.Id" value="Edit" class="btn btn-warning">Editar</a>
                 </td>
                   <td>
-                    <a asp-action="detail" asp-route-id="@item.Id">Details</a>
+                    <a asp-action="detail" asp-route-id="@item.Id" value="Detail"class="btn btn-info">Detalhes</a>
                 </td>
                   <td>
-                    <a asp-action="delete" asp-route-id="@item.Id" value="Delete" class="btn btn-danger">Delete</a>
+                    <a asp-action="delete" asp-route-id="@item.Id" value="Delete" class="btn btn-danger">Apagar</a>
                 </td>
             </tr>
         }
