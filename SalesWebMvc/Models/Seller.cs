@@ -9,15 +9,23 @@ namespace SalesWebMvc.Models
     public class Seller
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="Preencha o nome")]
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} pequeno de mais fica entre {2} e {1} Caracteres")]
         public string Nome { get; set; }
+
+        [Required(ErrorMessage = "{0} invalido")]
+        [EmailAddress(ErrorMessage ="Imail Invalido")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatorio")]
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataDeNascimento { get; set; }
 
+        [Required(ErrorMessage = "Campo obrigatorio")]
         [Display(Name = "Salario Base")]
         [DataType(DataType.Currency)]
         public double BaseSalarial { get; set; }

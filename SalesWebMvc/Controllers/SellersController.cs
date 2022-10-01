@@ -41,6 +41,14 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            //Validacao sem JS
+            if (!ModelState.IsValid)
+            {
+                var departaments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departaments = departaments };
+                return View(viewModel);
+            }
+            //FIM
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
         }
@@ -49,7 +57,7 @@ namespace SalesWebMvc.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction(nameof(Error),new {message = "Id nao Fornecido" });
+                return RedirectToAction(nameof(Error), new { message = "Id nao Fornecido" });
             }
             var obj = _sellerService.FindById(id.Value);
             if (obj == null)
@@ -87,6 +95,7 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id nao Fornecido" });
@@ -109,6 +118,14 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Seller seller)
         {
+            //Validacao sem JS
+            if (!ModelState.IsValid)
+            {
+                var departaments = _departmentService.FindAll();
+                var viewModel = new SellerFormViewModel { Seller = seller, Departaments = departaments };
+                return View(viewModel);
+            }
+            //FIM
             if (id != seller.Id)
             {
                 return RedirectToAction(nameof(Error), new { message = "Id nao Corresponde" });
