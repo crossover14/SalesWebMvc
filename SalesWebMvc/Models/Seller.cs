@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace SalesWebMvc.Models
 
@@ -10,12 +10,12 @@ namespace SalesWebMvc.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Preencha o nome")]
+        [Required(ErrorMessage = "Preencha o nome")]
         [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} pequeno de mais fica entre {2} e {1} Caracteres")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "{0} invalido")]
-        [EmailAddress(ErrorMessage ="Imail Invalido")]
+        [EmailAddress(ErrorMessage = "Imail Invalido")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
@@ -38,9 +38,9 @@ namespace SalesWebMvc.Models
         {
         }
 
-        public Seller( string nome, string email, DateTime dataDeNascimento, double basesalarial, Departament departament)
+        public Seller(string nome, string email, DateTime dataDeNascimento, double basesalarial, Departament departament)
         {
-            
+
             Nome = nome;
             Email = email;
             DataDeNascimento = dataDeNascimento;
@@ -48,14 +48,14 @@ namespace SalesWebMvc.Models
             Departament = departament;
         }
 
-        public void AddSales(SalesRecord sr) 
+        public void AddSales(SalesRecord sr)
         {
             Sales.Add(sr);
         }
 
         public void RemoveSales(SalesRecord sr)
         {
-           Sales.Remove(sr);
+            Sales.Remove(sr);
         }
 
         public double TotalSales(DateTime initial, DateTime final)
