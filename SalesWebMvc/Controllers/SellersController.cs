@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Services.Exceptions;
 
 namespace SalesWebMvc.Controllers
 {
@@ -73,9 +75,18 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Delete(int id)
         {
+            try
+            {
+                await _sellerService.RemoveAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (IntegrityException e)
+            {
 
-            await _sellerService.RemoveAsync(id);
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Error), new { message = "Este vededor nao pode ser deletado ele cotem vendas!!!" });
+            }
+
+           
         }
 
 
